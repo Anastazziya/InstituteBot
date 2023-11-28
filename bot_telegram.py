@@ -1,13 +1,10 @@
-from aiogram import Bot, Dispatcher
-from aiogram.fsm.storage.memory import MemoryStorage
+from create_bot import bot, dp
+from aiogram.utils import executor
 
 
-storage = MemoryStorage()
-
-bot = Bot(token='6479180128:AAGOfpLH50y9ne0FgfcQS_JhAaH5Fj87rH8')
-
-dp = Dispatcher(bot, storage=storage)
+async def on_startup():
+    print('Бот онлайн')
 
 
-
-
+    if __name__ == "__main__":
+        executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
